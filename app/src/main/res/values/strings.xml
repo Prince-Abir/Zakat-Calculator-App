@@ -1,0 +1,70 @@
+<resources>
+
+    //AppName
+    <string name="app_name">Zakat Calculator</string>
+
+    //MainActivity Title
+    <string name="Zakat_Title">“And establish prayer and give Zakat, and whatever good you put forward for yourselves – you will find it with Allah.” (2:110, Qur’an)</string>
+
+
+    //CardView Verses Start Here
+
+    <string name="How_Does_The_Quran_Address_Zakat_Text">
+        There are four important things to mention here:
+        \n\n\n1. The Arabic word zakât itself (the purely linguistic meanings of which, significantly, can denote “increase,” “growth,” “betterment,” “righteousness,” “praise,” “blessings,” “purification,” and “commendation”) occurs 30 times in the Quran.
+        \n\n2. Allah revealed the Quran to the Prophet Muhammad, on him be peace, piecemeal over a 23-year period, traditionally divided into verses (literally “signs,” ayât) and sûrahs (divinely revealed divisions of the Quran) sent down to him in the first 13 years of his prophetic summons,
+        when he still lived in his birthplace of Makkah; and verses and sûrahs revealed to him after his migration (hijrah) to Madinah.The word Zakat notably appears nine times in eight different Makkan surahs as the alms Muslims until today know they must give, including in surahs sent down
+        early in the message and call of the Prophet, on him be peace. This means that Allah made Zakat — the giving of alms to the poor — an integral part of Islam from the beginning and a defining quality and required conduct of the believers who would live it.
+        \n\n3. Of the 30 places the word Zakat occurs in the Quran, in 27 of them it is closely paired with its “sister Pillar” of Islam, the Ṣalât-Prayer (the distinctive bowing and bowing down in worship that Muslims do obligatorily five times a day). These two forms of worship make up the second and third of Islam’s celebrated Five Pillars, respectively.
+        \n\n4. Allah sometimes refers to Zakat in the Quran as Ṣadaqah in Zakat’s Sharî‘ah, or meaning in divine law, of shares of a Muslim’s accumulated wealth-types to be distributed on a schedule to the eight kinds of people He delineated in the Quran as its eligible recipients.
+
+
+    </string>
+
+    <string name="verse1">
+        Yet you shall duly establish the Prayer. And you shall give the Zakât-Charity, and therewith lend God a most goodly loan. For whatever good you advance for your souls, you shall find its reward with God in the Hereafter; yet it shall be far better and much greater in reward (Sûrat Al-Muzzammil, 73:20).
+    </string>
+
+    <string name="verse2">
+        Then steadfastly continue to duly establish the Prayer, and give the Zakât-Charity (Sûrat Al-Mujâdilah,, 58:13).
+    </string>
+
+    <string name="verse3">For woe to those who associate gods with God, those who do not give the Zakat-Charity, those who are disbelievers in the Hereafter (Sûrat Fuṣṣilat 41:7).</string>
+
+    <string name="verse4"> Indeed, ‘prescribed charitable offerings’ are only to be given to the poor and the indigent, and to those who work on administering it, and to those whose hearts are to be reconciled, and to free those in bondage, and to the debt-ridden, and for the cause of God, and to the wayfarer. This is an obligation from God. And God is all-knowing, all-wise (9:60).</string>
+
+    <string name="Is_Zakat_purely_transactional_In_the_Quran_Text">
+        No. Allah equates Zakat with high spiritual development and, indeed, with belief itself. One can see both these aspects in the first two verses mentioned in the previous question’s response.Muslim scholars define knowledge in and of Islam not by the information
+        one retains regarding it, even if that is vast, but by the implementation of that revealed guidance with conscious gratitude in one’s life, no matter how little or minor that conversion of revealed counsel into deliberate action may seem.
+    </string>
+
+    <string name="Why_did_Allah_use_the_Arabic_word_Zakat_for_this_obligatory_alms">
+        According to the brilliant Quran commentator and linguist Al-Wâḥidî (468H/1075CE) of Nishapur, Khorasan, the name zakat signifies that this mandatory charity from a believer “increases” the wealth from
+        which it is taken when it is given to its rightful recipients, the ones designated by Allah, as such.Allah settles this divine investment on a believer for him or her to pay it out to its divine designees,
+        like a bond or a trust, upon that wealth’s maturity date. When the believer complies, this alms payment “protects” the wealth from which it came from dissipating or being destroyed.
+        \n\nThe Prophet said, in this regard:
+    </string>
+
+    <string name="verse5">
+        A person\'s obligatory alms does not remain mixed with his other wealth without obliterating it” (Bukhari, in his Târîkh Al-Kabîr, The Large History of Hadith Narrators).
+    </string>
+
+    <string name="verse6"> Take from their wealth a ‘charitable offering’ to cleanse them and purify them thereby (Sûrat Al-Tawbah, 9:60).</string>
+
+    <string name="Does_the_Quran_say_that_Prophet_Muhammad_Text">No. Allah tells us that He commanded all the prophets and communities of righteousness and Heavenly Revelation before us to give Zakat, according to the measures and limits He set for them.
+        \n\nThe Quran reports that Prophet Jesus, peace on him, said this miraculously shortly after his birth:</string>
+
+    <string name="verse7"> And thus has He made me blessed, wherever I may be. And further, He has enjoined me to be ever observant of the Prayer, and to give the Zakat-Charity, as long as I am alive (Sûrat Maryam, 19:31).</string>
+
+    <string name="verse8"> And mention also in the Book, the tiding of Ishmael. Indeed, he was ever true to his promise. And he was a messenger and an eminent prophet. He used to enjoin his family with the Prayer and the Zakat–Charity. Thus, to his Lord, he was ever–pleasing (Sûrat Maryam, 19:54–55). </string>
+
+    <string name="verse9">  And we made them exemplary leaders, guiding to faith by Our command. For We made them prophets and revealed to them Our commandments bidding the doing of good works, and the establishment of the Prayer and the giving of the Zakat-Charity. Thus to Us alone did they offer worship (Sûrat Al-Anbiyâ’, 21:73)</string>
+
+    <string name="Does_the_Quran_point_to_Zakat_Text"> Yes. Allah defines fair government and just authorities, in part, as those that use the societal positions He bequeaths to them and the power at their disposal to organize the systematic taking of obligatory alms from those He has enriched to give it to the designated needful.
+        In other words, governments and leaders that are equitable and moral establish His prescribed mechanisms of mandatory charity to redistribute wealth among the people in order to offset the imbalances that human beings in community inevitably skew toward.</string>
+
+    <string name="verse10">  These are the ones who when We set them in authority over the land, they duly establish the Prayer, and give the Zakat-Charity, and enjoin what is right and forbid what is wrong. Yet to God alone belongs the ultimate end of all affairs (Sûrat Al-Ḥajj, 22:41).</string>
+    <string name="Important_link_title">Read the important Article about Zakat from WorldWide Websites</string>
+
+
+</resources>
