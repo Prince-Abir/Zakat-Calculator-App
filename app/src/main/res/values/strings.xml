@@ -7,6 +7,14 @@
     <string name="Zakat_Title">“And establish prayer and give Zakat, and whatever good you put forward for yourselves – you will find it with Allah.” (2:110, Qur’an)</string>
 
 
+    //AdID's
+
+    <string name="bannerID">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstatialId">ca-app-pub-3940256099942544/1033173712</string>
+
+
+
+
     //CardView Verses Start Here
 
     <string name="How_Does_The_Quran_Address_Zakat_Text">
@@ -64,7 +72,7 @@
         In other words, governments and leaders that are equitable and moral establish His prescribed mechanisms of mandatory charity to redistribute wealth among the people in order to offset the imbalances that human beings in community inevitably skew toward.</string>
 
     <string name="verse10">  These are the ones who when We set them in authority over the land, they duly establish the Prayer, and give the Zakat-Charity, and enjoin what is right and forbid what is wrong. Yet to God alone belongs the ultimate end of all affairs (Sûrat Al-Ḥajj, 22:41).</string>
-    <string name="Important_link_title">Read the important Article about Zakat from WorldWide Websites</string>
+    <string name="Important_link_title">Read the important articles about zakat from worldwide websites</string>
 
 
 </resources>

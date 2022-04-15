@@ -6,11 +6,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.zakatcalculator.MainActivity;
 import com.app.zakatcalculator.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 
 public class LinkActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private AdView bannerAd;
+    private int banner_Ad_Click_Count = 0;
 
 
     TextView WebLinkButton1Id, WebLinkButton2Id, WebLinkButton3Id, WebLinkButton4Id, WebLinkButton5Id, WebLinkButton6Id, WebLinkButton7Id;
@@ -19,6 +28,8 @@ public class LinkActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link);
+
+        bannerAdCode();
 
         WebLinkButton1Id = findViewById(R.id.WebLinkButton1Id);
         WebLinkButton2Id = findViewById(R.id.WebLinkButton2Id);
@@ -75,6 +86,33 @@ public class LinkActivity extends AppCompatActivity implements View.OnClickListe
     private void setLink(String link) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
 
+    }
+
+    public void bannerAdCode() {
+
+        //BannerAD
+        bannerAd = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        bannerAd.loadAd(adRequest);
+
+        bannerAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                bannerAd.loadAd(adRequest);
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                banner_Ad_Click_Count++;
+                if (banner_Ad_Click_Count >= 3) {
+                    if (bannerAd != null) bannerAd.setVisibility(View.GONE);
+                }
+            }
+
+        });
     }
 
 }

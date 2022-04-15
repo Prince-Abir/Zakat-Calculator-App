@@ -2,14 +2,25 @@ package com.app.zakatcalculator.calculate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.zakatcalculator.MainActivity;
 import com.app.zakatcalculator.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+
+import java.util.Random;
 
 public class CalculateActivity extends AppCompatActivity {
 
@@ -28,10 +39,19 @@ public class CalculateActivity extends AppCompatActivity {
     private double zakatAmount = 0;
     private double payableZakat;
 
+    int range = 10;
+    int randomNumber = 0;
+    private AdView bannerAd;
+    private InterstitialAd mInterstitialAd;
+    private int banner_Ad_Click_Count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
+
+        bannerAdCode();
+
 
         editText1 = findViewById(R.id.editText1Id);
         editText2 = findViewById(R.id.editText2Id);
@@ -61,6 +81,8 @@ public class CalculateActivity extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                interstitialAdCode();
 
                 if (editText1.getText().toString().isEmpty() | editText2.getText().toString().isEmpty() | editText3.getText().toString().isEmpty()
                         | editText4.getText().toString().isEmpty() | editText5.getText().toString().isEmpty() | editText6.getText().toString().isEmpty() | editText7.getText().toString().isEmpty() |
@@ -127,6 +149,87 @@ public class CalculateActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void bannerAdCode() {
+
+        //BannerAD
+        bannerAd = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        bannerAd.loadAd(adRequest);
+
+        bannerAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                bannerAd.loadAd(adRequest);
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                banner_Ad_Click_Count++;
+                if (banner_Ad_Click_Count >= 3) {
+                    if (bannerAd != null) bannerAd.setVisibility(View.GONE);
+                }
+            }
+
+        });
+    }
+
+    public void interstitialAdCode() {
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(getApplicationContext(), getString(R.string.interstatialId), adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Random random = new Random();
+                        randomNumber = random.nextInt(range);
+                        Toast.makeText(getApplicationContext(), "random number is: " + randomNumber, Toast.LENGTH_SHORT).show();
+                        if (randomNumber % 2 == 0) {
+                            mInterstitialAd.show(CalculateActivity.this);
+                        }
+                        Log.i("TAG", "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i("TAG", loadAdError.getMessage());
+                        mInterstitialAd = null;
+                        InterstitialAd.load(getApplicationContext(), getString(R.string.interstatialId), adRequest,
+                                new InterstitialAdLoadCallback() {
+                                    @Override
+                                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                                        // The mInterstitialAd reference will be null until
+                                        // an ad is loaded.
+                                        mInterstitialAd = interstitialAd;
+                                        Random random = new Random();
+                                        randomNumber = random.nextInt(range);
+                                        Toast.makeText(getApplicationContext(), "random number is: " + randomNumber, Toast.LENGTH_SHORT).show();
+                                        if (randomNumber % 2 == 0) {
+                                            mInterstitialAd.show(CalculateActivity.this);
+                                        }
+                                        Log.i("TAG", "onAdLoaded");
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                                        // Handle the error
+                                        Log.i("TAG", loadAdError.getMessage());
+                                        mInterstitialAd = null;
+                                    }
+                                });
+                    }
+
+                });
 
     }
 }

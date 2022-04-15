@@ -1,10 +1,16 @@
 package com.app.zakatcalculator;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,6 +20,18 @@ import com.app.zakatcalculator.links.LinkActivity;
 import com.app.zakatcalculator.verses.QuranVersesActivity;
 import com.app.zakatcalculator.video.VideoActivity;
 import com.app.zakatcalculator.zakat.AboutZakatActivity;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+
+
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +42,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView cardVideo;
     CardView cardCalculate;
     CardView cardHadith;
+
+    int range = 10;
+    int randomNumber = 0;
+    private AdView bannerAd;
+    private InterstitialAd mInterstitialAd;
+    private int banner_Ad_Click_Count = 0;
+
+
+
+    public boolean InternetConnectionCheck(){
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (networkInfo!= null && networkInfo.isConnectedOrConnecting()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public void AlertDialogShowing(){
+
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("No Internet Connection!")
+                .setMessage("Please check your internet connection")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
+
+    }
+
 
 
     @Override
@@ -46,25 +103,133 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cardCalculate.setOnClickListener(this);
         cardHadith.setOnClickListener(this);
 
-    }
 
+        //Google Ad Initialization
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        bannerAdCode();
+
+    }
     @Override
     public void onClick(View v) {
-        if (v.getId() == cardZakat.getId()) {
-            startActivity(new Intent(getApplicationContext(), AboutZakatActivity.class));
-        } else if (v.getId() == cardVerses.getId()) {
-            startActivity(new Intent(getApplicationContext(), QuranVersesActivity.class));
-        } else if (v.getId() == cardLinks.getId()) {
-            startActivity(new Intent(getApplicationContext(), LinkActivity.class));
-        } else if (v.getId() == cardVideo.getId()) {
-            startActivity(new Intent(getApplicationContext(), VideoActivity.class));
-        } else if (v.getId() == cardCalculate.getId()) {
-            startActivity(new Intent(getApplicationContext(), CalculateActivity.class));
-        }
-        else if (v.getId() == cardHadith.getId()){
-            startActivity(new Intent(getApplicationContext(), HadithActivity.class));
+
+        if (InternetConnectionCheck()) {
+
+
+            if (v.getId() == cardZakat.getId()) {
+                    startActivity(new Intent(getApplicationContext(), AboutZakatActivity.class));
+                    interstitialAdCode();
+
+            } else if (v.getId() == cardVerses.getId()) {
+
+                startActivity(new Intent(getApplicationContext(), QuranVersesActivity.class));
+                interstitialAdCode();
+            } else if (v.getId() == cardLinks.getId()) {
+                startActivity(new Intent(getApplicationContext(), LinkActivity.class));
+                interstitialAdCode();
+            } else if (v.getId() == cardVideo.getId()) {
+                startActivity(new Intent(getApplicationContext(), VideoActivity.class));
+                interstitialAdCode();
+            } else if (v.getId() == cardCalculate.getId()) {
+                startActivity(new Intent(getApplicationContext(), CalculateActivity.class));
+                interstitialAdCode();
+            } else if (v.getId() == cardHadith.getId()) {
+                startActivity(new Intent(getApplicationContext(), HadithActivity.class));
+                interstitialAdCode();
+            }
         }
 
+        else{
+            AlertDialogShowing();
+        }
+
+    }
+
+
+    public void interstitialAdCode() {
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(getApplicationContext(), getString(R.string.interstatialId), adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Random random = new Random();
+                        randomNumber = random.nextInt(range);
+                        Toast.makeText(getApplicationContext(), "random number is: " + randomNumber, Toast.LENGTH_SHORT).show();
+                        if (randomNumber % 2 == 0) {
+                            mInterstitialAd.show(MainActivity.this);
+                        }
+                        Log.i("TAG", "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i("TAG", loadAdError.getMessage());
+                        mInterstitialAd = null;
+                        InterstitialAd.load(getApplicationContext(), getString(R.string.interstatialId), adRequest,
+                                new InterstitialAdLoadCallback() {
+                                    @Override
+                                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                                        // The mInterstitialAd reference will be null until
+                                        // an ad is loaded.
+                                        mInterstitialAd = interstitialAd;
+                                        Random random = new Random();
+                                        randomNumber = random.nextInt(range);
+                                        Toast.makeText(getApplicationContext(), "random number is: " + randomNumber, Toast.LENGTH_SHORT).show();
+                                        if (randomNumber % 2 == 0) {
+                                            mInterstitialAd.show(MainActivity.this);
+                                        }
+                                        Log.i("TAG", "onAdLoaded");
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                                        // Handle the error
+                                        Log.i("TAG", loadAdError.getMessage());
+                                        mInterstitialAd = null;
+                                    }
+                                });
+                    }
+
+                });
+
+    }
+
+    public void bannerAdCode() {
+
+        //BannerAD
+        bannerAd = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        bannerAd.loadAd(adRequest);
+
+        bannerAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                bannerAd.loadAd(adRequest);
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                banner_Ad_Click_Count++;
+                if (banner_Ad_Click_Count >= 3) {
+                    if (bannerAd != null) bannerAd.setVisibility(View.GONE);
+                }
+            }
+
+        });
     }
 
     @Override
@@ -94,4 +259,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alertDialog.show();
 
     }
+
+
+
+
+
+
 }
+

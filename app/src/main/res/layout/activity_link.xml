@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +10,7 @@
     tools:context=".links.LinkActivity">
 
     <LinearLayout
+        android:id="@+id/HeadSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -22,6 +23,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:padding="5dp"
+
             android:src="@drawable/link">
 
         </ImageView>
@@ -61,6 +63,8 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/Title"
+        android:layout_below="@id/HeadSection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -75,6 +79,9 @@
     </TextView>
 
     <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_below="@id/Title"
+        android:layout_above="@id/AdSection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbarSize="3dp">
@@ -563,5 +570,25 @@
 
     </ScrollView>
 
+    <RelativeLayout
+        android:id="@+id/AdSection"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
 
-</LinearLayout>
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+
+        </com.google.android.gms.ads.AdView>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

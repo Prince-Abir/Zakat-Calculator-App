@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.airbnb.android:lottie:4.2.2'
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
 }
