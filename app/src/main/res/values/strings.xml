@@ -9,10 +9,8 @@
 
     //AdID's
 
-    <string name="bannerID">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstatialId">ca-app-pub-3940256099942544/1033173712</string>
-
-
+    <string name="bannerID">ca-app-pub-2356323669011082/1126434129</string>
+    <string name="interstatialId">ca-app-pub-2356323669011082/6766021038</string>
 
 
     //CardView Verses Start Here

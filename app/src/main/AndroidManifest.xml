@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.zakatcalculator">
+    package="com.PrinceTechSolution.zakatcalculator">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,34 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZakatCalculator">
         <activity
-            android:name=".HadithActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.HadithActivity"
             android:exported="false" />
         <activity
-            android:name=".calculate.ResultActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.calculate.ResultActivity"
             android:exported="false"
-            android:parentActivityName=".calculate.CalculateActivity" />
+            android:parentActivityName="com.PrinceTechSolution.zakatcalculator.calculate.CalculateActivity" />
         <activity
-            android:name=".calculate.CalculateActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.calculate.CalculateActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.PrinceTechSolution.zakatcalculator.MainActivity" />
         <activity
-            android:name=".video.VideoActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.video.VideoActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.PrinceTechSolution.zakatcalculator.MainActivity" />
         <activity
-            android:name=".links.LinkActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.links.LinkActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.PrinceTechSolution.zakatcalculator.MainActivity" />
         <activity
-            android:name=".verses.QuranVersesActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.verses.QuranVersesActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.PrinceTechSolution.zakatcalculator.MainActivity" />
         <activity
-            android:name=".zakat.AboutZakatActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.zakat.AboutZakatActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.PrinceTechSolution.zakatcalculator.MainActivity" />
         <activity
-            android:name=".SplashScreen"
+            android:name="com.PrinceTechSolution.zakatcalculator.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.MyDesign">
             <intent-filter>
@@ -51,14 +51,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.PrinceTechSolution.zakatcalculator.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.MyDesign1" />
 
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-2356323669011082~8472487396" />
 
     </application>
 
